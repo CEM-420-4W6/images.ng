@@ -1,0 +1,24 @@
+<h1>Demo Images</h1>
+
+<h2>HTML</h2>
+<form enctype="multipart/form-data" method="POST" action="http://localhost:5169/api/photos">
+  <input type="file" name="fileUpload" accept="image/*"/>
+  <button>Upload</button>
+</form>
+
+<h2>OnChange</h2>
+<input type="file" name="fileUpload" accept="image/*" #fileUpload (change)="uploadPhoto(fileUpload.files![0])"/>
+
+<h2>ViewChild</h2>
+<form (submit)="uploadPhotoViewChild()">
+  <input #fileUploadViewChild type="file" name="fileUpload" accept="image/*"/>
+  <button>Upload</button>
+</form>
+
+<div *ngIf="photoId > 0">
+  <img [src]="'http://localhost:5169/api/photos/sm/'+photoId">
+  <br>
+  <img [src]="'http://localhost:5169/api/photos/md/'+photoId">
+  <br>
+  <img [src]="'http://localhost:5169/api/photos/lg/'+photoId">
+</div>
